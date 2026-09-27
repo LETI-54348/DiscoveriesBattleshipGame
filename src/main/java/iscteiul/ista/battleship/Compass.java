@@ -1,48 +1,79 @@
-/**
- *
- */
-package iscteiul.ista.battleship;
-
-/**
- * @author fba
- */
-public enum Compass {
-    NORTH('n'), SOUTH('s'), EAST('e'), WEST('o'), UNKNOWN('u');
-
-    private final char c;
-
-    Compass(char c) {
-        this.c = c;
+package iscteiul.ista.battleship;                                                                                                                                                                                                       
+                                                                                                                                                                                                                                            
+    /**                                                                                                                                                                                                                                     
+     * Enumeração que representa a rosa dos ventos e os pontos cardeais                                                                                                                                                                     
+     * para definir a orientação e rumo dos navios na grelha da Batalha Naval.                                                                                                                                                              
+     *                                                                                                                                                                                                                                      
+     * @author Simão Sousa (nº 130768)                                                                                                                                                                                                      
+     * @version 1.0                                                                                                                                                                                                                         
+     */                                                                                                                                                                                                                                     
+    public enum Compass {                                                                                                                                                                                                                   
+        /** Orientação para Norte ('n'). */                                                                                                                                                                                                 
+        NORTH('n'),                                                                                                                                                                                                                         
+        /** Orientação para Sul ('s'). */                                                                                                                                                                                                   
+        SOUTH('s'),                                                                                                                                                                                                                         
+        /** Orientação para Este ('e'). */                                                                                                                                                                                                  
+        EAST('e'),                                                                                                                                                                                                                          
+        /** Orientação para Oeste ('o'). */                                                                                                                                                                                                 
+        WEST('o'),                                                                                                                                                                                                                          
+        /** Orientação Desconhecida ou Indefinida ('u'). */                                                                                                                                                                                 
+        UNKNOWN('u');                                                                                                                                                                                                                       
+                                                                                                                                                                                                                                            
+        private final char c;                                                                                                                                                                                                               
+                                                                                                                                                                                                                                            
+        /**                                                                                                                                                                                                                                 
+         * Construtor da enumeração associado ao carácter representativo da direção.                                                                                                                                                        
+         *                                                                                                                                                                                                                                  
+         * @param c O carácter identificador do rumo.                                                                                                                                                                                       
+         */                                                                                                                                                                                                                                 
+        Compass(char c) {                                                                                                                                                                                                                   
+            this.c = c;                                                                                                                                                                                                                     
+        }                                                                                                                                                                                                                                   
+                                                                                                                                                                                                                                            
+        /**                                                                                                                                                                                                                                 
+         * Obtém o carácter que representa a direção cardeal.                                                                                                                                                                               
+         *                                                                                                                                                                                                                                  
+         * @return O carácter correspondente ('n', 's', 'e', 'o' ou 'u').                                                                                                                                                                   
+         */                                                                                                                                                                                                                                 
+        public char getDirection() {                                                                                                                                                                                                        
+            return c;                                                                                                                                                                                                                       
+        }                                                                                                                                                                                                                                   
+                                                                                                                                                                                                                                            
+        /**                                                                                                                                                                                                                                 
+         * Retorna a representação textual do rumo cardeal.                                                                                                                                                                                 
+         *                                                                                                                                                                                                                                  
+         * @return String contendo o carácter da direção.                                                                                                                                                                                   
+         */                                                                                                                                                                                                                                 
+        @Override                                                                                                                                                                                                                           
+        public String toString() {                                                                                                                                                                                                          
+            return "" + c;                                                                                                                                                                                                                  
+        }                                                                                                                                                                                                                                   
+                                                                                                                                                                                                                                            
+        /**                                                                                                                                                                                                                                 
+         * Converte um carácter na respetiva direção cardeal {@link Compass}.                                                                                                                                                               
+         *                                                                                                                                                                                                                                  
+         * @param ch O carácter a converter ('n', 's', 'e', 'o').                                                                                                                                                                           
+         * @return O valor do enum {@link Compass} correspondente, ou {@link #UNKNOWN} se o carácter não for reconhecido.                                                                                                                   
+         */                                                                                                                                                                                                                                 
+        static Compass charToCompass(char ch) {                                                                                                                                                                                             
+            Compass bearing;                                                                                                                                                                                                                
+            switch (ch) {                                                                                                                                                                                                                   
+                case 'n':                                                                                                                                                                                                                   
+                    bearing = NORTH;                                                                                                                                                                                                        
+                    break;                                                                                                                                                                                                                  
+                case 's':                                                                                                                                                                                                                   
+                    bearing = SOUTH;                                                                                                                                                                                                        
+                    break;                                                                                                                                                                                                                  
+                case 'e':                                                                                                                                                                                                                   
+                    bearing = EAST;                                                                                                                                                                                                         
+                    break;                                                                                                                                                                                                                  
+                case 'o':                                                                                                                                                                                                                   
+                    bearing = WEST;                                                                                                                                                                                                         
+                    break;                                                                                                                                                                                                                  
+                default:                                                                                                                                                                                                                    
+                    bearing = UNKNOWN;                                                                                                                                                                                                      
+            }                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                            
+            return bearing;                                                                                                                                                                                                                 
+        }                                                                                                                                                                                                                                   
     }
-
-    public char getDirection() {
-        return c;
-    }
-
-    @Override
-    public String toString() {
-        return "" + c;
-    }
-
-    static Compass charToCompass(char ch) {
-        Compass bearing;
-        switch (ch) {
-            case 'n':
-                bearing = NORTH;
-                break;
-            case 's':
-                bearing = SOUTH;
-                break;
-            case 'e':
-                bearing = EAST;
-                break;
-            case 'o':
-                bearing = WEST;
-                break;
-            default:
-                bearing = UNKNOWN;
-        }
-
-        return bearing;
-    }
-}

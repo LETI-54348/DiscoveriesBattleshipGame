@@ -1,25 +1,66 @@
-/**
- *
- */
-package iscteiul.ista.battleship;
-
-/**
- * @author fba
- */
-public interface IPosition {
-    int getRow();
-
-    int getColumn();
-
-    boolean equals(Object other);
-
-    boolean isAdjacentTo(IPosition other);
-
-    void occupy();
-
-    void shoot();
-
-    boolean isOccupied();
-
-    boolean isHit();
-}
+package iscteiul.ista.battleship;                                                                                                                                                                                                       
+                                                                                                                                                                                                                                            
+    /**                                                                                                                                                                                                                                     
+     * Interface que representa uma posição (coordenada) na grelha do jogo da Batalha Naval.                                                                                                                                                
+     * Define os métodos para consultar coordenadas, verificar adjacência, ocupar posições                                                                                                                                                  
+     * e registar disparos.                                                                                                                                                                                                                 
+     *                                                                                                                                                                                                                                      
+     * @author Simão Sousa (nº 130768)                                                                                                                                                                                                      
+     * @version 1.0                                                                                                                                                                                                                         
+     */                                                                                                                                                                                                                                     
+    public interface IPosition {                                                                                                                                                                                                            
+                                                                                                                                                                                                                                            
+        /**                                                                                                                                                                                                                                 
+         * Obtém o índice da linha correspondente a esta posição na grelha.                                                                                                                                                                 
+         *                                                                                                                                                                                                                                  
+         * @return O número da linha (0 a 9).                                                                                                                                                                                               
+         */                                                                                                                                                                                                                                 
+        int getRow();                                                                                                                                                                                                                       
+                                                                                                                                                                                                                                            
+        /**                                                                                                                                                                                                                                 
+         * Obtém o índice da coluna correspondente a esta posição na grelha.                                                                                                                                                                
+         *                                                                                                                                                                                                                                  
+         * @return O número da coluna (0 a 9).                                                                                                                                                                                              
+         */                                                                                                                                                                                                                                 
+        int getColumn();                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                            
+        /**                                                                                                                                                                                                                                 
+         * Compara esta posição com outro objeto para verificar a sua igualdade.                                                                                                                                                            
+         *                                                                                                                                                                                                                                  
+         * @param other O objeto a comparar.                                                                                                                                                                                                
+         * @return {@code true} se as posições tiverem as mesmas coordenadas de linha e coluna, {@code false} caso contrário.                                                                                                               
+         */                                                                                                                                                                                                                                 
+        boolean equals(Object other);                                                                                                                                                                                                       
+                                                                                                                                                                                                                                            
+        /**                                                                                                                                                                                                                                 
+         * Verifica se esta posição é adjacente (vizinha direta ou na diagonal) a outra posição.                                                                                                                                            
+         *                                                                                                                                                                                                                                  
+         * @param other A outra posição a comparar.                                                                                                                                                                                         
+         * @return {@code true} se as posições forem adjacentes, {@code false} caso contrário.                                                                                                                                              
+         */                                                                                                                                                                                                                                 
+        boolean isAdjacentTo(IPosition other);                                                                                                                                                                                              
+                                                                                                                                                                                                                                            
+        /**                                                                                                                                                                                                                                 
+         * Marca esta posição como ocupada por um navio.                                                                                                                                                                                    
+         */                                                                                                                                                                                                                                 
+        void occupy();                                                                                                                                                                                                                      
+                                                                                                                                                                                                                                            
+        /**                                                                                                                                                                                                                                 
+         * Regista um disparo sobre esta posição da grelha.                                                                                                                                                                                 
+         */                                                                                                                                                                                                                                 
+        void shoot();                                                                                                                                                                                                                       
+                                                                                                                                                                                                                                            
+        /**                                                                                                                                                                                                                                 
+         * Verifica se esta posição está ocupada por alguma embarcação.                                                                                                                                                                     
+         *                                                                                                                                                                                                                                  
+         * @return {@code true} se estiver ocupada, {@code false} caso contrário.                                                                                                                                                           
+         */                                                                                                                                                                                                                                 
+        boolean isOccupied();                                                                                                                                                                                                               
+                                                                                                                                                                                                                                            
+        /**                                                                                                                                                                                                                                 
+         * Verifica se esta posição foi atingida por um disparo.                                                                                                                                                                            
+         *                                                                                                                                                                                                                                  
+         * @return {@code true} se tiver sido alvejada, {@code false} caso contrário.                                                                                                                                                       
+         */                                                                                                                                                                                                                                 
+        boolean isHit();                                                                                                                                                                                                                    
+    }               
