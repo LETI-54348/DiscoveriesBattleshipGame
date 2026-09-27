@@ -18,3 +18,15 @@ Este repositório aloja o projeto desenvolvido no âmbito da unidade curricular.
 
 ## 🖼️ Imagem do Projeto
 ![Ilha Terceira](https://upload.wikimedia.org/wikipedia/commons/0/08/Isla_Terceira.jpg)
+
+---
+
+## Frota dos Descobrimentos
+
+| Batalha Naval | Descobrimentos | English | Dimensão | #Navios |
+|---|---|---|---:|---:|
+| Porta-aviões | Galeão | Galleon | 5 | 1 |
+| Navio de 4 canhões | Fragata | Frigate | 4 | 1 |
+| Navio de 3 canhões | Nau | Carrack | 3 | 2 |
+| Navio de 2 canhões | Caravela | Caravel | 2 | 3 |
+| Submarino | Barca | Barge | 1 | 4 |
