@@ -1,15 +1,29 @@
-/**
- *
- */
 package iscteiul.ista.battleship;
 
+/**
+ * Classe que representa uma embarcação do tipo Fragata no jogo Batalha Naval.
+ * A Fragata é um navio militar linear de tamanho 4, preenchendo as suas coordenadas
+ * de forma sequencial na horizontal ou vertical consoante a orientação indicada.
+ *
+ * @author Grupo Ninjas (Juliana Prado, Luís Prado, Simão Sousa)
+ * @version 1.0
+ * @see Ship
+ */
 public class Frigate extends Ship {
+
+    /** O tamanho padrão (número de secções ocupadas) da Fragata. */
     private static final Integer SIZE = 4;
+
+    /** O identificador nominal da embarcação. */
     private static final String NAME = "Fragata";
 
     /**
-     * @param bearing
-     * @param pos
+     * Construtor da classe Frigate. Cria o navio mapeando as 4 posições sequenciais
+     * em linha reta no tabuleiro de acordo com a direção geográfica selecionada.
+     *
+     * @param bearing                  A orientação espacial (Norte, Sul, Este, Oeste).
+     * @param pos                      A coordenada inicial a partir da qual o navio se estende.
+     * @throws IllegalArgumentException Se a orientação indicada for inválida ou nula.
      */
     public Frigate(Compass bearing, IPosition pos) throws IllegalArgumentException {
         super(Frigate.NAME, bearing, pos);
@@ -29,14 +43,12 @@ public class Frigate extends Ship {
         }
     }
 
-    /*
-     * (non-Javadoc)
+    /**
+     * Devolve o tamanho absoluto da Fragata.
      *
-     * @see battleship.Ship#getSize()
+     * @return O número de posições ocupadas pela embarcação.
      */
-    @Override
     public Integer getSize() {
         return Frigate.SIZE;
     }
-
 }
