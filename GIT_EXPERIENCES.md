@@ -15,3 +15,40 @@ para guardar temporariamente alterações locais ainda não submetidas.
  
 Esta experiência permitiu verificar que o Git Stash permite guardar
    temporariamente trabalho ainda não submetido e recuperá-lo posteriormente.
+
+## Git Rebase
+Durante o envio das alterações para o repositório remoto, o Push foi
+rejeitado porque a branch remota `origin/54348` continha alterações que
+ainda não estavam integradas na branch local.
+ 
+Foi utilizada a opção **Rebase** do IntelliJ IDEA para atualizar a branch
+local, reaplicando os commits locais sobre o estado mais recente da branch
+remota.
+ 
+Após a conclusão do rebase, o Push foi realizado com sucesso para
+`origin/54348`.
+ 
+Esta experiência permitiu observar, na prática, a utilização de rebase
+para integrar alterações remotas antes de efetuar um Push.
+## Merge Conflict
+
+Foi realizada uma experiência de conflito de merge através de duas
+branches criadas a partir da mesma versão do projeto.
+
+As branches `54348-conflict` e `54348-conflict-b` alteraram de forma
+diferente a mesma linha do ficheiro `merge-conflict-demo.txt`.
+
+Na branch `54348-conflict`, a estratégia foi definida como "aleatória",
+enquanto na branch `54348-conflict-b` foi definida como "orientada".
+
+Ao realizar o merge da branch `54348-conflict` na branch
+`54348-conflict-b`, o Git identificou um conflito que não podia ser
+resolvido automaticamente.
+
+O conflito foi resolvido manualmente através da ferramenta gráfica de
+resolução de conflitos do IntelliJ IDEA, analisando ambas as alterações
+e definindo como resultado final:
+
+`Estratégia de disparo: aleatória ou orientada`
+
+Após a resolução, o merge foi concluído com sucesso.
