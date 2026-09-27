@@ -1,1 +1,1 @@
-Estratégia de disparo: por definir
+Estratégia de disparo: orientada
