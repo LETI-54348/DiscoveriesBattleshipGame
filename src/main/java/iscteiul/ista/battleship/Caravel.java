@@ -1,47 +1,57 @@
-/**
- *
- */
-package iscteiul.ista.battleship;
-
-public class Caravel extends Ship {
-    private static final Integer SIZE = 2;
-    private static final String NAME = "Caravela";
-
-    /**
-     * @param bearing the bearing where the Caravel heads to
-     * @param pos     initial point for positioning the Caravel
-     */
-    public Caravel(Compass bearing, IPosition pos) throws NullPointerException, IllegalArgumentException {
-        super(Caravel.NAME, bearing, pos);
-
-        if (bearing == null)
-            throw new NullPointerException("ERROR! invalid bearing for the caravel");
-
-        switch (bearing) {
-            case NORTH:
-            case SOUTH:
-                for (int r = 0; r < SIZE; r++)
-                    getPositions().add(new Position(pos.getRow() + r, pos.getColumn()));
-                break;
-            case EAST:
-            case WEST:
-                for (int c = 0; c < SIZE; c++)
-                    getPositions().add(new Position(pos.getRow(), pos.getColumn() + c));
-                break;
-            default:
-                throw new IllegalArgumentException("ERROR! invalid bearing for the caravel");
-        }
-
+package iscteiul.ista.battleship;                                                                                                                                                                                                       
+                                                                                                                                                                                                                                            
+    /**                                                                                                                                                                                                                                     
+     * Representa a Caravela no jogo da Batalha Naval dos Descobrimentos.                                                                                                                                                                   
+     * A Caravela é uma embarcação ligeira que ocupa exatamente 2 posições contíguas na grelha,                                                                                                                                             
+     * podendo ser posicionada na vertical (Norte/Sul) ou na horizontal (Este/Oeste).                                                                                                                                                       
+     *                                                                                                                                                                                                                                      
+     * @author Simão Sousa (nº 130768)                                                                                                                                                                                                      
+     * @version 1.0                                                                                                                                                                                                                         
+     * @see Ship                                                                                                                                                                                                                            
+     */                                                                                                                                                                                                                                     
+    public class Caravel extends Ship {                                                                                                                                                                                                     
+        private static final Integer SIZE = 2;                                                                                                                                                                                              
+        private static final String NAME = "Caravela";                                                                                                                                                                                      
+                                                                                                                                                                                                                                            
+        /**                                                                                                                                                                                                                                 
+         * Construtor da Caravela. Calcula e preenche as 2 posições ocupadas na grelha                                                                                                                                                      
+         * a partir da coordenada inicial de referência e da orientação cardeal fornecida.                                                                                                                                                  
+         *                                                                                                                                                                                                                                  
+         * @param bearing A orientação cardeal da Caravela (Norte, Sul, Este ou Oeste).                                                                                                                                                     
+         * @param pos A posição inicial de referência na grelha.                                                                                                                                                                            
+         * @throws NullPointerException Se a orientação (bearing) for {@code null}.                                                                                                                                                         
+         * @throws IllegalArgumentException Se for fornecida uma orientação inválida.                                                                                                                                                       
+         */                                                                                                                                                                                                                                 
+        public Caravel(Compass bearing, IPosition pos) throws NullPointerException, IllegalArgumentException {                                                                                                                              
+            super(Caravel.NAME, bearing, pos);                                                                                                                                                                                              
+                                                                                                                                                                                                                                            
+            if (bearing == null)                                                                                                                                                                                                            
+                throw new NullPointerException("ERROR! invalid bearing for the caravel");                                                                                                                                                   
+                                                                                                                                                                                                                                            
+            switch (bearing) {                                                                                                                                                                                                              
+                case NORTH:                                                                                                                                                                                                                 
+                case SOUTH:                                                                                                                                                                                                                 
+                    for (int r = 0; r < SIZE; r++)                                                                                                                                                                                          
+                        getPositions().add(new Position(pos.getRow() + r, pos.getColumn()));                                                                                                                                                
+                    break;                                                                                                                                                                                                                  
+                case EAST:                                                                                                                                                                                                                  
+                case WEST:                                                                                                                                                                                                                  
+                    for (int c = 0; c < SIZE; c++)                                                                                                                                                                                          
+                        getPositions().add(new Position(pos.getRow(), pos.getColumn() + c));                                                                                                                                                
+                    break;                                                                                                                                                                                                                  
+                default:                                                                                                                                                                                                                    
+                    throw new IllegalArgumentException("ERROR! invalid bearing for the caravel");                                                                                                                                           
+            }                                                                                                                                                                                                                               
+        }                                                                                                                                                                                                                                   
+                                                                                                                                                                                                                                            
+        /**                                                                                                                                                                                                                                 
+         * Obtém o tamanho da Caravela (número de posições que ocupa).                                                                                                                                                                      
+         *                                                                                                                                                                                                                                  
+         * @return O tamanho fixo da Caravela, que é 2.                                                                                                                                                                                     
+         */                                                                                                                                                                                                                                 
+        @Override                                                                                                                                                                                                                           
+        public Integer getSize() {                                                                                                                                                                                                          
+            return SIZE;                                                                                                                                                                                                                    
+        }                                                                                                                                                                                                                                   
+                                                                                                                                                                                                                                            
     }
-
-    /*
-     * (non-Javadoc)
-     *
-     * @see battleship.Ship#getSize()
-     */
-    @Override
-    public Integer getSize() {
-        return SIZE;
-    }
-
-}
