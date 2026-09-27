@@ -1,36 +1,115 @@
-/**
- *
- */
-package iscteiul.ista.battleship;
-
-import java.util.List;
-
-public interface IShip {
-    String getCategory();
-
-    Integer getSize();
-
-    List<IPosition> getPositions();
-
-    IPosition getPosition();
-
-    Compass getBearing();
-
-    boolean stillFloating();
-
-    int getTopMostPos();
-
-    int getBottomMostPos();
-
-    int getLeftMostPos();
-
-    int getRightMostPos();
-
-    boolean occupies(IPosition pos);
-
-    boolean tooCloseTo(IShip other);
-
-    boolean tooCloseTo(IPosition pos);
-
-    void shoot(IPosition pos);
-}
+package iscteiul.ista.battleship;                                                                                                                                                                                                       
+                                                                                                                                                                                                                                            
+    import java.util.List;                                                                                                                                                                                                                  
+                                                                                                                                                                                                                                            
+    /**                                                                                                                                                                                                                                     
+     * Interface que define o contrato para qualquer embarcação no jogo da Batalha Naval.                                                                                                                                                   
+     * Especifica métodos para consulta de categoria, dimensão, posições ocupadas, orientação,                                                                                                                                              
+     * estado de flutuação e verificação de proximidade e disparos.                                                                                                                                                                         
+     *                                                                                                                                                                                                                                      
+     * @author Simão Sousa (nº 130768)                                                                                                                                                                                                      
+     * @version 1.0                                                                                                                                                                                                                         
+     */                                                                                                                                                                                                                                     
+    public interface IShip {                                                                                                                                                                                                                
+                                                                                                                                                                                                                                            
+        /**                                                                                                                                                                                                                                 
+         * Obtém o nome da categoria ou tipo de navio (ex: "Caravela", "Galeão").                                                                                                                                                           
+         *                                                                                                                                                                                                                                  
+         * @return O nome da categoria do navio.                                                                                                                                                                                            
+         */                                                                                                                                                                                                                                 
+        String getCategory();                                                                                                                                                                                                               
+                                                                                                                                                                                                                                            
+        /**                                                                                                                                                                                                                                 
+         * Obtém o tamanho (número de posições/células) ocupado pelo navio.                                                                                                                                                                 
+         *                                                                                                                                                                                                                                  
+         * @return O tamanho do navio.                                                                                                                                                                                                      
+         */                                                                                                                                                                                                                                 
+        Integer getSize();                                                                                                                                                                                                                  
+                                                                                                                                                                                                                                            
+        /**                                                                                                                                                                                                                                 
+         * Retorna a lista de todas as posições ocupadas pelo navio na grelha.                                                                                                                                                              
+         *                                                                                                                                                                                                                                  
+         * @return Lista de instâncias de {@link IPosition}.                                                                                                                                                                                
+         */                                                                                                                                                                                                                                 
+        List<IPosition> getPositions();                                                                                                                                                                                                     
+                                                                                                                                                                                                                                            
+        /**                                                                                                                                                                                                                                 
+         * Obtém a posição de referência inicial onde o navio foi colocado.                                                                                                                                                                 
+         *                                                                                                                                                                                                                                  
+         * @return A posição inicial {@link IPosition}.                                                                                                                                                                                     
+         */                                                                                                                                                                                                                                 
+        IPosition getPosition();                                                                                                                                                                                                            
+                                                                                                                                                                                                                                            
+        /**                                                                                                                                                                                                                                 
+         * Obtém o rumo/orientação cardeal do navio.                                                                                                                                                                                        
+         *                                                                                                                                                                                                                                  
+         * @return A direção {@link Compass}.                                                                                                                                                                                               
+         */                                                                                                                                                                                                                                 
+        Compass getBearing();                                                                                                                                                                                                               
+                                                                                                                                                                                                                                            
+        /**                                                                                                                                                                                                                                 
+         * Verifica se o navio ainda se encontra a flutuar (se tem pelo menos uma posição não atingida).                                                                                                                                    
+         *                                                                                                                                                                                                                                  
+         * @return {@code true} se o navio ainda estiver à tona, {@code false} se estiver totalmente afundado.                                                                                                                              
+         */                                                                                                                                                                                                                                 
+        boolean stillFloating();                                                                                                                                                                                                            
+                                                                                                                                                                                                                                            
+        /**                                                                                                                                                                                                                                 
+         * Obtém o índice da linha mais a norte (menor valor de linha) ocupada pelo navio.                                                                                                                                                  
+         *                                                                                                                                                                                                                                  
+         * @return O menor índice de linha.                                                                                                                                                                                                 
+         */                                                                                                                                                                                                                                 
+        int getTopMostPos();                                                                                                                                                                                                                
+                                                                                                                                                                                                                                            
+        /**                                                                                                                                                                                                                                 
+         * Obtém o índice da linha mais a sul (maior valor de linha) ocupada pelo navio.                                                                                                                                                    
+         *                                                                                                                                                                                                                                  
+         * @return O maior índice de linha.                                                                                                                                                                                                 
+         */                                                                                                                                                                                                                                 
+        int getBottomMostPos();                                                                                                                                                                                                             
+                                                                                                                                                                                                                                            
+        /**                                                                                                                                                                                                                                 
+         * Obtém o índice da coluna mais a oeste (menor valor de coluna) ocupada pelo navio.                                                                                                                                                
+         *                                                                                                                                                                                                                                  
+         * @return O menor índice de coluna.                                                                                                                                                                                                
+         */                                                                                                                                                                                                                                 
+        int getLeftMostPos();                                                                                                                                                                                                               
+                                                                                                                                                                                                                                            
+        /**                                                                                                                                                                                                                                 
+         * Obtém o índice da coluna mais a este (maior valor de coluna) ocupada pelo navio.                                                                                                                                                 
+         *                                                                                                                                                                                                                                  
+         * @return O maior índice de coluna.                                                                                                                                                                                                
+         */                                                                                                                                                                                                                                 
+        int getRightMostPos();                                                                                                                                                                                                              
+                                                                                                                                                                                                                                            
+        /**                                                                                                                                                                                                                                 
+         * Verifica se o navio ocupa uma determinada posição da grelha.                                                                                                                                                                     
+         *                                                                                                                                                                                                                                  
+         * @param pos A posição a verificar.                                                                                                                                                                                                
+         * @return {@code true} se o navio ocupar a posição, {@code false} caso contrário.                                                                                                                                                  
+         */                                                                                                                                                                                                                                 
+        boolean occupies(IPosition pos);                                                                                                                                                                                                    
+                                                                                                                                                                                                                                            
+        /**                                                                                                                                                                                                                                 
+         * Verifica se o navio está demasiado próximo de outro navio (adjacente ou sobreposto).                                                                                                                                             
+         *                                                                                                                                                                                                                                  
+         * @param other O outro navio a comparar.                                                                                                                                                                                           
+         * @return {@code true} se estiver demasiado perto violando as regras, {@code false} caso contrário.                                                                                                                                
+         */                                                                                                                                                                                                                                 
+        boolean tooCloseTo(IShip other);                                                                                                                                                                                                    
+                                                                                                                                                                                                                                            
+        /**                                                                                                                                                                                                                                 
+         * Verifica se o navio se encontra adjacente a uma determinada posição.                                                                                                                                                             
+         *                                                                                                                                                                                                                                  
+         * @param pos A posição a testar.                                                                                                                                                                                                   
+         * @return {@code true} se a posição for adjacente a qualquer parte do navio, {@code false} caso contrário.                                                                                                                         
+         */                                                                                                                                                                                                                                 
+        boolean tooCloseTo(IPosition pos);                                                                                                                                                                                                  
+                                                                                                                                                                                                                                            
+        /**                                                                                                                                                                                                                                 
+         * Regista um tiro sobre o navio. Caso a posição pertença ao navio, é marcada como atingida.                                                                                                                                        
+         *                                                                                                                                                                                                                                  
+         * @param pos A coordenada do disparo.                                                                                                                                                                                              
+         */                                                                                                                                                                                                                                 
+        void shoot(IPosition pos);                                                                                                                                                                                                          
+    }
