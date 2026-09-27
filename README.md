@@ -37,8 +37,18 @@ O jogo decorre em dois tabuleiros de grelha quadriculada de 10x10 posições:
  ## 📜 Contexto Histórico: A Era dos Descobrimentos                                                                                                                                                                                      
 O projeto transporta o clássico jogo de Batalha Naval para o período da expansão marítima portuguesa e os confrontos navais no Atlântico, como a célebre [Batalha de Vila Franca do Campo (1582)](https://en.wikipedia.org/wiki/Battle_of_Vila_Franca_do_Campo), travada nos Açores. As embarcações do jogo refletem os navios da época:                                                                                                                                                                              
 * [Galeão](https://en.wikipedia.org/wiki/Galleon): Poderosa belonave artilhada de grande porte, usada para escolta e defesa das rotas ultramarinas.                                                                                     
-* [Fragata](https://en.wikipedia.org/wiki/Frigate): Embarcação de guerra veloz, com capacidade de combate e patrulha costeira.
-                                                                                                                                                                                  
+* [Fragata](https://en.wikipedia.org/wiki/Frigate): Embarcação de guerra veloz, com capacidade de combate e patrulha costeira.                                                                                                                                                                              
 * [Nau](https://en.wikipedia.org/wiki/Carrack): Embarcação de grande porte e casco robusto, pilar da Rota do Cabo para a Índia.                                                                                                         
 * [Caravela](https://en.wikipedia.org/wiki/Caravel): Navio de exploração ágil com velas latinas, célebre pela capacidade de bolinar (navegar contra o vento).                                                                         
 * [Barca](https://en.wikipedia.org/wiki/Barge): Pequena embarcação costeira utilizada em missões de reconhecimento e apoio logístico.                                                                                                   
+---
+
+## Frota dos Descobrimentos
+
+| Batalha Naval | Descobrimentos | English | Dimensão | #Navios |
+|---|---|---|---:|---:|
+| Porta-aviões | Galeão | Galleon | 5 | 1 |
+| Navio de 4 canhões | Fragata | Frigate | 4 | 1 |
+| Navio de 3 canhões | Nau | Carrack | 3 | 2 |
+| Navio de 2 canhões | Caravela | Caravel | 2 | 3 |
+| Submarino | Barca | Barge | 1 | 4 |
